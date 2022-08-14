@@ -4,7 +4,7 @@ import numpy as np
 
 from torch.autograd import Variable
 
-class ImprovedModel(nn.Module):
+class SocialModel(nn.Module):
 
     def __init__(self, args, infer=False):
         '''
@@ -13,7 +13,7 @@ class ImprovedModel(nn.Module):
         args: Training arguments
         infer: Training or test time (true if test time)
         '''
-        super(ImprovedModel, self).__init__()
+        super(SocialModel, self).__init__()
 
         self.args = args
         self.infer = infer
@@ -53,8 +53,8 @@ class ImprovedModel(nn.Module):
         self.output_layer = nn.Linear(self.rnn_size, self.output_size)
 
         # ReLU and dropout unit
-        self.relu = nn.SELU()
-        self.dropout = nn.AlphaDropout(args.dropout)
+        self.relu = nn.ReLU()
+        self.dropout = nn.Dropout(args.dropout)
 
     def getSocialTensor(self, grid, hidden_states):
         '''

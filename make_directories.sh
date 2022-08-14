@@ -3,6 +3,11 @@
 
 mkdir -p log
 cd log
+mkdir -p IMPROVEDLSTM
+cd IMPROVEDLSTM
+mkdir -p GRU
+mkdir -p LSTM
+cd ..
 mkdir -p SOCIALLSTM
 cd SOCIALLSTM
 mkdir -p GRU
@@ -23,6 +28,11 @@ cd ..
 
 mkdir -p model
 cd model
+mkdir -p IMPROVEDLSTM
+cd IMPROVEDLSTM
+mkdir -p GRU
+mkdir -p LSTM
+cd ..
 mkdir -p SOCIALLSTM
 cd SOCIALLSTM
 mkdir -p GRU
@@ -42,6 +52,11 @@ cd ..
 
 mkdir -p result
 cd result
+mkdir -p IMPROVEDLSTM
+cd IMPROVEDLSTM
+mkdir -p GRU
+mkdir -p LSTM
+cd ..
 mkdir -p SOCIALLSTM
 cd SOCIALLSTM
 mkdir -p GRU
@@ -61,6 +76,19 @@ cd ..
 
 mkdir -p plot
 cd plot
+mkdir -p IMPROVEDLSTM
+cd IMPROVEDLSTM
+mkdir -p GRU
+cd GRU
+mkdir -p plots
+mkdir -p videos
+cd ..
+mkdir -p LSTM
+cd GRU
+mkdir -p plots
+mkdir -p videos
+cd ..
+cd ..
 mkdir -p SOCIALLSTM
 cd SOCIALLSTM
 mkdir -p GRU

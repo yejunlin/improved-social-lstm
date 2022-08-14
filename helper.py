@@ -7,7 +7,8 @@ import shutil
 from os import walk
 import math
 
-from model import SocialModel
+from model import ImprovedModel
+from slstm_model import SocialModel
 from olstm_model import OLSTMModel
 from vlstm_model import VLSTMModel
 
@@ -25,7 +26,8 @@ def get_method_name(index):
     return {
         1 : 'SOCIALLSTM',
         2 : 'OBSTACLELSTM',
-        3 : 'VANILLALSTM'
+        3 : 'VANILLALSTM',
+        4 : 'IMPROVEDLSTM'
     }.get(index, 'SOCIALLSTM')
 
 def get_model(index, arguments, infer = False):
@@ -36,6 +38,8 @@ def get_model(index, arguments, infer = False):
         return OLSTMModel(arguments, infer)
     elif index == 3:
         return VLSTMModel(arguments, infer)
+    elif index == 4:
+        return ImprovedModel(arguments, infer)
     else:
         return SocialModel(arguments, infer)
 

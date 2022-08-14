@@ -8,7 +8,7 @@ import time
 import pickle
 import subprocess
 
-from model import ImprovedModel
+from model import SocialModel
 from utils import DataLoader
 from grid import getSequenceGridMask
 from helper import *
@@ -121,7 +121,7 @@ def train(args):
     dataloader = DataLoader(f_prefix, args.batch_size, args.seq_length, args.num_validation, forcePreProcess=True)
 
     model_name = "LSTM"
-    method_name = "IMPROVEDLSTM"
+    method_name = "SOCIALLSTM"
     save_tar_name = method_name+"_lstm_model_"
     if args.gru:
         model_name = "GRU"
@@ -151,7 +151,7 @@ def train(args):
         return os.path.join(save_directory, method_name, model_name, save_tar_name+str(x)+'.tar')
 
     # model creation
-    net = ImprovedModel(args)
+    net = SocialModel(args)
     if args.use_cuda:
         net = net.cuda()
 

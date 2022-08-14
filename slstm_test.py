@@ -45,8 +45,8 @@ def main():
     parser.add_argument('--gru', action="store_true", default=False,
                         help='True : GRU cell, False: LSTM cell')
     # method selection
-    parser.add_argument('--method', type=int, default=4,
-                        help='Method of lstm will be used (1 = social lstm, 2 = obstacle lstm, 3 = vanilla lstm, 4 = improved social lstm)')
+    parser.add_argument('--method', type=int, default=1,
+                        help='Method of lstm will be used (1 = social lstm, 2 = obstacle lstm, 3 = vanilla lstm)')
     
     # Parse the parameters
     sample_args = parser.parse_args()
@@ -55,8 +55,8 @@ def main():
     prefix = ''
     f_prefix = '.'
     if sample_args.drive is True:
-      prefix='drive/semester_project/improved_lstm_final/'
-      f_prefix = 'drive/semester_project/improved_lstm_final'
+      prefix='drive/semester_project/social_lstm_final/'
+      f_prefix = 'drive/semester_project/social_lstm_final'
 
     #run sh file for folder creation
     if not os.path.isdir("log/"):
@@ -162,7 +162,7 @@ def main():
             #grid mask calculation
             if sample_args.method == 2: #obstacle lstm
                 grid_seq = getSequenceGridMask(x_seq, dataset_data, PedsList_seq, saved_args.neighborhood_size, saved_args.grid_size, saved_args.use_cuda, True)
-            elif  sample_args.method == 1 or sample_args.method == 4: #social lstm & improved version
+            elif  sample_args.method == 1: #social lstm   
                 grid_seq = getSequenceGridMask(x_seq, dataset_data, PedsList_seq, saved_args.neighborhood_size, saved_args.grid_size, saved_args.use_cuda)
 
             #vectorize datapoints
@@ -343,7 +343,7 @@ def sample(x_seq, Pedlist, args, net, true_x_seq, true_Pedlist, saved_args, dime
                 # Compute the new grid masks with the predicted positions
                 if args.method == 2: #obstacle lstm
                     prev_grid = getGridMask(current_x_seq.data.cpu(), dimensions, len(true_Pedlist[tstep+1]),saved_args.neighborhood_size, saved_args.grid_size, True)
-                elif  args.method == 1 or args.method == 4: #social lstm & improved version
+                elif  args.method == 1: #social lstm   
                     prev_grid = getGridMask(current_x_seq.data.cpu(), dimensions, len(true_Pedlist[tstep+1]),saved_args.neighborhood_size, saved_args.grid_size)
 
                 prev_grid = Variable(torch.from_numpy(prev_grid).float())

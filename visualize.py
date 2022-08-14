@@ -30,7 +30,7 @@ from helper import get_all_file_names, vectorize_seq, angle_between, rotate \
 def save_video(sequence_path, video_path, video_name ,frame):
     # save plots as video
     image_input_path = os.path.join(sequence_path, "sequence%05d.png")
-    video_output_path = os.path.join(video_path, video_name+'.mp4')
+    video_output_path = os.path.join(video_path, video_name+'.jpg')
     command = "ffmpeg -r "+str(frame)+" -i "+image_input_path+" -vcodec mpeg4 -y "+video_output_path
     print("Creating video: input sequence --> ",image_input_path," | output video --> ",video_output_path)
     os.system(str(command))
@@ -476,7 +476,7 @@ def create_plot_animation(plt, trajs, shuffled_ped_ids, target_id, inv_lookup ,s
     
     plt.gca().legend(loc='best')
     ani = animation.ArtistAnimation(plt.gcf(), frames, interval=1200, blit=False, repeat_delay=1000)
-    ani.save(plot_directory+'/'+name+'.mp4')
+    ani.save(plot_directory+'/'+name+'.gif')
     print("Video creation ended.")
 
 def vectorize_traj(traj, nodesPresent, look_up):
