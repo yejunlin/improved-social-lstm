@@ -53,8 +53,8 @@ class ImprovedModel(nn.Module):
         self.output_layer = nn.Linear(self.rnn_size, self.output_size)
 
         # ReLU and dropout unit
-        self.relu = nn.SELU()
-        self.dropout = nn.AlphaDropout(args.dropout)
+        self.relu = nn.LeakyReLU()
+        self.dropout = nn.Dropout(args.dropout)
 
     def getSocialTensor(self, grid, hidden_states):
         '''

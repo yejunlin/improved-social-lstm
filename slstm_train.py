@@ -8,7 +8,7 @@ import time
 import pickle
 import subprocess
 
-from model import SocialModel
+from slstm_model import SocialModel
 from utils import DataLoader
 from grid import getSequenceGridMask
 from helper import *
